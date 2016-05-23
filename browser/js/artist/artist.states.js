@@ -26,12 +26,12 @@ juke.config(function ($stateProvider) {
 
   $stateProvider.state('artist.albums', {
     url: '/albums',
-    templateUrl: '/js/artist/templates/artist-albums.html'
+    template: '<album-list albums="artist.albums"></album-list>',
   });
 
   $stateProvider.state('artist.songs', {
     url: '/songs',
-    templateUrl: '/js/artist/templates/artist-songs.html'
+    template: '<song-list songs="artist.songs"></song-list>'
   });
 
 });
