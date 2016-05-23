@@ -37,7 +37,7 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 56px;
+  height: auto;
   border-top: 1px solid #222;
   border-bottom: 1px solid #222;
   padding: 8px; }
@@ -49,3 +49,11 @@ footer {
 
 .album img {
   height: 300px; }
+
+[double-click] {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer; }
+
+tr[double-click]:hover {
+  background-color: #444; }

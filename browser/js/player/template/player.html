@@ -1,5 +1,6 @@
 <footer>
 <div ng-show="getCurrentSong()">
+  <p>{{ getCurrentSong().name }}</p>
   <div class="pull-left">
     <button class="btn btn-default" ng-click="previous()">
       <span class="glyphicon glyphicon-step-backward"></span>

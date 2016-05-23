@@ -2,6 +2,10 @@
 
 var juke = angular.module('juke', ['ui.router', 'ngMessages']);
 
+juke.config(function($locationProvider) {
+	$locationProvider.html5Mode(true);
+})
+
 juke.run(function ($rootScope) {
   $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
     console.error('Error transitioning from "' + fromState.name + '" to "' + toState.name + '":', error);
@@ -54,7 +58,7 @@ juke.directive('songList', function(PlayerFactory) {
 
 			scope.toggle = function (song) {
 				if (song !== PlayerFactory.getCurrentSong()) {
-					PlayerFactory.start(song, $scope.playlist.songs);
+					PlayerFactory.start(song, scope.songs);
 				} else if ( PlayerFactory.isPlaying() ) {
 					PlayerFactory.pause();
 				} else {
@@ -73,5 +77,18 @@ juke.directive('songList', function(PlayerFactory) {
 	}
 })
 
-
+juke.directive('doubleClick', function(PlayerFactory) {
+	return {
+		restrict: 'A',
+		//templateUrl: '/js/artist/templates/artist-songs.html',
+		scope: {
+			doubleClick: '&'
+		},
+		link: function(scope, element, attr) {
+			element.on('dblclick', function() {
+				scope.doubleClick();
+			})
+		}
+	}
+})
 

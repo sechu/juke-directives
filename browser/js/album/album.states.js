@@ -1,6 +1,7 @@
 'use strict';
 
-juke.config(function ($stateProvider) {
+juke.config(function ($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.when("/", '/albums').otherwise('/');
 
   $stateProvider.state('albums', {
     url: '/albums',
